@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: remove apache and php support
+    apt:
+      name: apache2
+      state: absent
+      update_cache: no
+      purge: yes
+
+      name: libapache2-mod-php
+      state: absent
+      update_cache: no
+      purge: yes
+
+
