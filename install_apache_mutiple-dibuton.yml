@@ -1,0 +1,30 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+  
+  - name: install apache and php support
+    apt:
+      name: apache2
+      update_cache: yes
+      state: latest
+    when: "ansible_distribution": "Ubuntu"
+
+      name: libapache2_mod_php
+      update_cache: yes
+      state: latest
+    when: "ansible_distribution": "Ubuntu",
+
+
+   - name: install apache and php support
+    dnf:
+      name: httpd
+      update_cache: yes
+      state: latest
+    when: "ansible_distribution": "Centos"
+
+      name: php
+      update_cache: yes
+      state: latest
+    when: "ansible_distribution": "Centos",
